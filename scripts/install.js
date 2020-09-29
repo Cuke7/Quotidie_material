@@ -18,6 +18,7 @@ function saveBeforeInstallPromptEvent(evt) {
   deferredInstallPrompt = evt;
   if(!deferredInstallPrompt == null){
     installButton.removeAttribute("hidden");
+    console.log('HEY')
   }
 }
 
