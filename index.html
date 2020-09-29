@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quotidie</title>
+  <meta name="PWA_title" content="PWA_content" />
+  <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Quotidie" />
+  <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png" />
+  <meta name="description" content="PWA" />
+  <meta name="theme-color" content="#2F3BA2" />
+
+  <!-- Import Material styles -->
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@3.2.0/dist/material-components-web.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <!-- Import my custom styles -->
+  <link rel="stylesheet" href="./styles/style.css" />
+</head>
+
+<header class="mdc-top-app-bar mdc-top-app-bar--fixed" style="top: 0px; margin-bottom: 16px;">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <!-- <button
+          class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
+          aria-label="Open navigation menu"
+        >
+          menu
+        </button>-->
+      <span class="mdc-top-app-bar__title">Quotidie ✝️</span>
+    </section>
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+      <button id="butInstall" class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Install" hidden>
+        get_app
+      </button>
+      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Lectures">
+        book
+      </button>
+      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Prières">
+        <span class="icon-rosary"></span>
+      </button>
+      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Share">
+        share
+      </button>
+    </section>
+  </div>
+</header>
+
+<body style="margin: 0px">
+
+  <!-- EVANGILE-->
+  <div class="mdc-card" style="margin: 16px;margin-top: 72px;">
+    <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
+      <div class="my-card-content">
+        <div class="demo-card__primary ">
+          <h2 class="demo-card__title mdc-typography mdc-typography--headline6"><b>Évangile du jour</b></h2>
+          <hr>
+          <h3 id="evangile_title" class="demo-card__subtitle mdc-typography mdc-typography--subtitle2"></h3>
+        </div>
+        <div id="evangile_text" class="demo-card__secondary mdc-typography mdc-typography--body2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAINT DU JOUR-->
+  <div class="mdc-card" style="margin: 16px;margin-top: 0px;">
+    <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
+      <div id="saint_image" class="mdc-card__media mdc-card__media--16-9 demo-card__media"
+        style="background-image: url(&quot;https://fr.aleteia.org/wp-content/uploads/sites/6/2017/09/web-saint-september-27-vincentde-paul-public-domain.jpg?quality=100&strip=all&w=620&h=310&crop=1&quot;);">
+      </div>
+      <div class="demo-card__primary my-card-content">
+        <h2 class="demo-card__title mdc-typography mdc-typography--headline6"><b id="saint_name"></b></h2>
+        <h3 id="saint_subtitle" class="demo-card__subtitle mdc-typography mdc-typography--subtitle2"></h3>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+<!-- Import Material scripts -->
+<script src="https://unpkg.com/material-components-web@3.2.0/dist/material-components-web.min.js"></script>
+
+<script src="./scripts/component.js"></script>
+<script src="./scripts/app.js"></script>
+<script src="./scripts/install.js"></script>
+
+<!--<body>
+  <header class="header">
+    <h1>
+      PWA_title
+    </h1>
+    <button id="butInstall" aria-label="Install" hidden></button>
+    <button id="butShare" aria-label="Share"></button>
+  </header>
+
+  <main class="main">
+    <div class="my_card">
+      <b>Hello world !</b>
+      <input type="file" accept="image/*" capture="camera" />
+    </div>
+  </div>
+</main>
+
+<script src="/scripts/app.js"></script>
+<script src="/scripts/install.js"></script>
+</body> -->
+
+</html>
