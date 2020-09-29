@@ -1,6 +1,6 @@
 {
-  "name": "PWA_name",
-  "short_name": "PWA_name",
+  "name": "Quotidie",
+  "short_name": "Quotidie",
   "icons": [{
     "src": "/images/icons/icon-128x128.png",
       "sizes": "128x128",
