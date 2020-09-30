@@ -28,13 +28,13 @@ function updateData() {
   });
 
   // Get the evangile data from the network.
-  /*getEvangileFromNetwork().then(evangile => {
+  getEvangileFromNetwork().then(evangile => {
     console.log('Displaying evangile info from API')
     document.getElementById('evangile_title').innerHTML = evangile.title.substring(11) + '.';
     document.getElementById('evangile_text').innerHTML = evangile.text;
     //console.log(evangile)
     fix_evangile()
-  });*/
+  });
 
   // Get the saint data from the cache.
   getSaintFromCache().then(saint => {
@@ -52,7 +52,7 @@ function updateData() {
   });
 
   // Get the saint data from the network.
-  /*getSaintFromNetwork().then(saint => {
+  getSaintFromNetwork().then(saint => {
     console.log('Displaying saint info from API')
     let image = document.getElementById('saint_image');
     image.style.backgroundImage = "url(" + saint.image_url + ")";
@@ -62,7 +62,7 @@ function updateData() {
     subtitle.innerHTML = saint.subtitle;
     //let url = document.getElementById('saint_link');
     //url.href = saint.url;
-  });*/
+  });
 }
 
 function init() {
