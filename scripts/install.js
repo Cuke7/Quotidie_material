@@ -16,7 +16,8 @@ window.addEventListener("beforeinstallprompt", saveBeforeInstallPromptEvent);
 function saveBeforeInstallPromptEvent(evt) {
   // CODELAB: Add code to save event & show the install button.
   deferredInstallPrompt = evt;
-    installButton.removeAttribute("hidden");
+  installButton.removeAttribute("hidden");
+  installButton.style.display = "block";
 }
 
 /**
@@ -29,6 +30,7 @@ function installPWA(evt) {
   deferredInstallPrompt.prompt();
   // Hide the install button, it can't be called twice.
   installButton.setAttribute("hidden", true);
+  installButton.style.display = "none";
   // CODELAB: Log user response to prompt.
   deferredInstallPrompt.userChoice.then(choice => {
     if (choice.outcome === "accepted") {
@@ -52,8 +54,4 @@ window.addEventListener("appinstalled", logAppInstalled);
 function logAppInstalled(evt) {
   // CODELAB: Add code to log the event
   console.log('Weather App was installed.', evt);
-}
-
-if(deferredInstallPrompt == null){
-  installButton.style.display = "none";
 }
