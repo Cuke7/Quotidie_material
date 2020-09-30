@@ -1,8 +1,8 @@
 "use strict";
 
 // CODELAB: Update cache names any time any of the cached files change.
-const CACHE_NAME = "static-cache-v3";
-const DATA_CACHE_NAME = "data-cache-v3";
+const CACHE_NAME = "static-cache-v1";
+const DATA_CACHE_NAME = "data-cache-v1";
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
@@ -10,7 +10,7 @@ const FILES_TO_CACHE = [
   "/index.html",
   "/scripts/app.js",
   "/scripts/component.js",
-  //"/scripts/install.js",
+  "/scripts/install.js",
   "/styles/style.css",
   "/styles/icomoon.woff",
 ];
@@ -49,7 +49,7 @@ self.addEventListener("activate", (evt) => {
 self.addEventListener("fetch", (evt) => {
   console.log("[ServiceWorker] Fetch", evt.request.url);
   // CODELAB: Add fetch event handler here.
-  if (evt.request.url.includes("/get_data/")) {
+  if (evt.request.url.includes("/get_evangile") || evt.request.url.includes("/get_saint")) {
     console.log("[Service Worker] Fetch (data)", evt.request.url);
     evt.respondWith(
       caches.open(DATA_CACHE_NAME).then((cache) => {
@@ -63,7 +63,6 @@ self.addEventListener("fetch", (evt) => {
             return response;
           })
           .catch((err) => {
-            // Network request failed, try to get it from the cache.
             return cache.match(evt.request);
           });
       })
