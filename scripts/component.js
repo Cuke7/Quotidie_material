@@ -2,6 +2,9 @@
 //mdc.ripple.MDCRipple.attachTo(document.querySelector(".mdc-button"));
 
 const topAppBarElement = document.querySelector(".mdc-top-app-bar");
-//const topAppBar = new MDCTopAppBar(topAppBarElement);
 
 mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarElement);
+mdc.textField.MDCTextField.attachTo(document.querySelector('.mdc-text-field'));
+
+const chipSetEl = document.querySelector('.mdc-chip-set');
+mdc.chips.MDCChip.attachTo(chipSetEl);

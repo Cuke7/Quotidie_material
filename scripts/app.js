@@ -1,5 +1,7 @@
 "use strict";
 
+const shareButton = document.getElementById('butShare');
+
 if ("serviceWorker" in navigator) {
   console.log("Service Worker is supported");
 
@@ -145,3 +147,15 @@ function fix_evangile() {
   let hr = document.createElement('hr');
   ps[2].before(hr);
 }
+
+shareButton.addEventListener('click', function () {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Quotidie ✝️',
+      text: "Lire l'évangile du jour",
+      url: 'https://quotidie-netlify.app/',
+    })
+      .then(() => console.log('Successful share'))
+      .catch((error) => console.log('Error sharing', error));
+  }
+})
