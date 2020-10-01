@@ -29,3 +29,7 @@ hr {
   height: 1.1px;
   background-color: #3f51b5;
 }
+
+.mdc-chip__primary-action{
+  outline: none;
+}

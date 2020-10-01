@@ -46,9 +46,9 @@
 <body style="margin: 0px">
 
   <div class="mdc-card" style="margin: 16px;margin-top: 72px;">
-    <div class="demo-card__primary my-card-content" style = "padding-top: 16px; padding-bottom: 16px;">
-      <label class="mdc-text-field mdc-text-field--outlined" style = "width: 100%;">
-        <input type="text" class="mdc-text-field__input" aria-labelledby="my-label-id">
+    <div class="demo-card__primary my-card-content" style="padding-top: 16px; padding-bottom: 16px;">
+      <label class="mdc-text-field mdc-text-field--outlined" style="width: 100%;">
+        <input id="search_bar" type="text" class="mdc-text-field__input" aria-labelledby="my-label-id">
         <span class="mdc-notched-outline">
           <span class="mdc-notched-outline__leading"></span>
           <span class="mdc-notched-outline__notch">
@@ -58,38 +58,62 @@
         </span>
       </label>
       <div class="mdc-chip-set" role="grid">
-        <div class="mdc-chip" role="row">
+        <div class="mdc-chip" role="row" onclick="prayer_selected(this.name)" id="search_results1"
+          style="display: none;">
           <div class="mdc-chip__ripple"></div>
           <span role="gridcell">
             <span role="button" tabindex="0" class="mdc-chip__primary-action">
-              <span class="mdc-chip__text">Chip One</span>
+              <span id="search_results1_data" class="mdc-chip__text">Chip One</span>
             </span>
           </span>
         </div>
-        <div class="mdc-chip" role="row">
+        <div class="mdc-chip" role="row" onclick="prayer_selected(this.name)" id="search_results2"
+          style="display: none;">
           <div class="mdc-chip__ripple"></div>
           <span role="gridcell">
             <span role="button" tabindex="-1" class="mdc-chip__primary-action">
-              <span class="mdc-chip__text">Chip Two</span>
+              <span id="search_results2_data" class="mdc-chip__text">Chip Two</span>
             </span>
           </span>
         </div>
-        <div class="mdc-chip" role="row">
+        <div class="mdc-chip" role="row" onclick="prayer_selected(this.name)" id="search_results3"
+          style="display: none;">
           <div class="mdc-chip__ripple"></div>
           <span role="gridcell">
             <span role="button" tabindex="0" class="mdc-chip__primary-action">
-              <span class="mdc-chip__text">Chip Three</span>
+              <span id="search_results3_data" class="mdc-chip__text">Chip Three</span>
             </span>
           </span>
         </div>
-        <div class="mdc-chip" role="row">
+        <div class="mdc-chip" role="row" onclick="prayer_selected(this.name)" id="search_results4"
+          style="display: none;">
           <div class="mdc-chip__ripple"></div>
           <span role="gridcell">
             <span role="button" tabindex="-1" class="mdc-chip__primary-action">
-              <span class="mdc-chip__text">Chip Four</span>
+              <span id="search_results4_data" class="mdc-chip__text">Chip Four</span>
             </span>
           </span>
         </div>
+        <div class="mdc-chip" role="row" onclick="prayer_selected(this.name)" id="search_results5"
+          style="display: none;">
+          <div class="mdc-chip__ripple"></div>
+          <span role="gridcell">
+            <span role="button" tabindex="-1" class="mdc-chip__primary-action">
+              <span id="search_results5_data" class="mdc-chip__text">Chip fifth</span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="prayer_card" class="mdc-card" style="margin: 16px;margin-top: 16px;">
+    <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
+      <div class="my-card-content" style = "padding: 16px;">
+        <div class="demo-card__primary ">
+          <h3 id="prayer_title" class="demo-card__subtitle mdc-typography mdc-typography--subtitle2"></h3>
+        </div>
+        <div style="white-space:pre-wrap;" id="prayer_text" class="demo-card__secondary mdc-typography mdc-typography--body2"></div>
       </div>
     </div>
   </div>
@@ -101,7 +125,8 @@
 
 <!-- Import Material scripts -->
 <script src="https://unpkg.com/material-components-web@3.2.0/dist/material-components-web.min.js"></script>
-
+<script src="./scripts/prayers_data.js"></script>
+<script src="./scripts/prayers.js"></script>
 <script src="./scripts/component.js"></script>
 
 <!--<body>
