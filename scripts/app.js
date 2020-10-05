@@ -159,3 +159,9 @@ shareButton.addEventListener('click', function () {
       .catch((error) => console.log('Error sharing', error));
   }
 })
+
+// Material components
+const topAppBarElement = document.querySelector(".mdc-top-app-bar");
+
+mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarElement);
+mdc.textField.MDCTextField.attachTo(document.querySelector('.mdc-text-field'));

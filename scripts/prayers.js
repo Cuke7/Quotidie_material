@@ -143,3 +143,8 @@ shareButton.addEventListener('click', function () {
 			.catch((error) => console.log('Error sharing', error));
 	}
 })
+
+
+// Materials components
+const chipSetEl = document.querySelector('.mdc-chip-set');
+mdc.chips.MDCChip.attachTo(chipSetEl);
