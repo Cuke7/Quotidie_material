@@ -18,7 +18,7 @@ function saveBeforeInstallPromptEvent(evt) {
   deferredInstallPrompt = evt;
   installButton.removeAttribute("hidden");
   installButton.style.display = "block";
-  console.log('saveBeforeInstallPromptEvent => block')
+  //console.log('saveBeforeInstallPromptEvent => block')
 }
 
 /**
@@ -32,7 +32,7 @@ function installPWA(evt) {
   // Hide the install button, it can't be called twice.
   installButton.setAttribute("hidden", true);
   installButton.style.display = "none";
-  console.log('installPWA => none')
+  //console.log('installPWA => none')
   // CODELAB: Log user response to prompt.
   deferredInstallPrompt.userChoice.then(choice => {
     if (choice.outcome === "accepted") {

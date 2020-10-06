@@ -1,21 +1,36 @@
 "use strict";
 
+
+// Material components
+const topAppBarElement = document.querySelector(".mdc-top-app-bar");
+mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarElement);
+
+// Notification key
+const applicationServerPublicKey = 'BNgw-Zyf0z8cX2-b45_L60or_52GbSy02Nw4bp_SAJt_M6e0Y_6W4E8u7XzDCcmkGRmkjDRL53acllyHqS7B0fs';
+
+let isSubscribed = false;
+let swRegistration = null;
+
+const pushSwitch = document.getElementById('switch_notif');
+var text_notif = document.getElementById('text_notif');
+
 const shareButton = document.getElementById('butShare');
 
-if ("serviceWorker" in navigator) {
-  console.log("Service Worker is supported");
+if ('serviceWorker' in navigator && 'PushManager' in window) {
+  console.log('Service Worker and Push are supported');
 
-  navigator.serviceWorker
-    .register("service-worker.js")
+  navigator.serviceWorker.register('service-worker.js')
     .then(function (swReg) {
-      console.log("Service Worker is registered", swReg);
+      console.log('Service Worker is registered', swReg);
+
+      swRegistration = swReg;
     })
     .catch(function (error) {
-      console.error("Service Worker Error", error);
+      console.error('Service Worker Error', error);
     });
+} else {
+  console.warn('Push messaging is not supported');
 }
-
-
 
 function updateData() {
 
@@ -34,7 +49,6 @@ function updateData() {
     console.log('Displaying evangile info from API')
     document.getElementById('evangile_title').innerHTML = evangile.title.substring(11) + '.';
     document.getElementById('evangile_text').innerHTML = evangile.text;
-    //console.log(evangile)
     fix_evangile()
   });
 
@@ -62,13 +76,12 @@ function updateData() {
     name.innerHTML = saint.title;
     let subtitle = document.getElementById('saint_subtitle');
     subtitle.innerHTML = saint.subtitle;
-    //let url = document.getElementById('saint_link');
-    //url.href = saint.url;
   });
 }
 
 function init() {
   updateData();
+  init_auth();
 }
 
 init();
@@ -160,8 +173,177 @@ shareButton.addEventListener('click', function () {
   }
 })
 
-// Material components
-const topAppBarElement = document.querySelector(".mdc-top-app-bar");
+function urlB64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding)
+    .replace(/\-/g, '+')
+    .replace(/_/g, '/');
 
-mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarElement);
-mdc.textField.MDCTextField.attachTo(document.querySelector('.mdc-text-field'));
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
+
+function initializeUI() {
+
+  pushSwitch.addEventListener('change', function () {
+    if (isSubscribed) {
+      unsubscribeUser();
+    } else {
+      subscribeUser();
+    }
+  })
+
+  // Set the initial subscription value
+  swRegistration.pushManager.getSubscription()
+    .then(function (subscription) {
+      isSubscribed = !(subscription === null);
+
+      if (isSubscribed) {
+        console.log('User IS subscribed.');
+      } else {
+        console.log('User is NOT subscribed.');
+      }
+
+      updateSwitch();
+    });
+}
+
+if (navigator.serviceWorker != undefined) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(function (swReg) {
+      console.log('Service Worker is registered', swReg);
+
+      swRegistration = swReg;
+      initializeUI();
+    })
+}
+
+function updateSwitch() {
+  if (Notification.permission === 'denied') {
+    text_notif.innerHTML = 'Notifications push refusées';
+    pushSwitch.checked = false;
+    updateSubscriptionOnServer(null, null);
+    return;
+  }
+
+  if (isSubscribed) {
+    //text_notif.innerHTML = 'Désactiver les notifications push';
+    pushSwitch.checked = true;
+  } else {
+    //text_notif.innerHTML = 'Autoriser les notifications push';
+    pushSwitch.checked = false;
+  }
+}
+
+function subscribeUser() {
+  const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
+  swRegistration.pushManager.subscribe({
+    userVisibleOnly: true,
+    applicationServerKey: applicationServerKey
+  })
+    .then(function (subscription) {
+      console.log('User is subscribed.');
+      console.log(JSON.stringify(subscription))
+
+      updateSubscriptionOnServer(subscription, null);
+
+      isSubscribed = true;
+
+      updateSwitch();
+    })
+    .catch(function (error) {
+      console.error('Failed to subscribe the user: ', error);
+      updateSwitch();
+    });
+}
+
+function updateSubscriptionOnServer(subscription, uid) {
+  // TODO: Send subscription to application server
+  if (subscription) {
+    const uid = subscription.endpoint.split('fcm/send/')[1];
+    let user = firebase.auth().currentUser;
+    firebase.database().ref('PWA_users/' + user.displayName).set(JSON.stringify(subscription));
+  } else {
+    let user = firebase.auth().currentUser;
+    if (user) {
+      firebase.database().ref('PWA_users/' + user.displayName).remove();
+    }
+  }
+}
+
+function unsubscribeUser() {
+  let uid;
+  if (swRegistration) {
+    swRegistration.pushManager.getSubscription()
+      .then(function (subscription) {
+        if (subscription) {
+          uid = subscription.endpoint.split('fcm/send/')[1];
+          return subscription.unsubscribe();
+        }
+      })
+      .catch(function (error) {
+        console.log('Error unsubscribing', error);
+      })
+      .then(function () {
+        updateSubscriptionOnServer(null, uid);
+
+        console.log('User is unsubscribed.');
+        isSubscribed = false;
+
+        updateSwitch();
+      });
+  }
+}
+
+function init_auth() {
+  var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+  var uiConfig = {
+    callbacks: {
+      signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+        // User successfully signed in.
+        // Return type determines whether we continue the redirect automatically
+        // or whether we leave that to developer to handle.
+        //
+        return false;
+      },
+      uiShown: function () {
+        // The widget is rendered.
+        // Hide the loader.
+        document.getElementById('loader').style.display = 'none';
+      }
+    },
+    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+    signInFlow: 'popup',
+    signInSuccessUrl: '/chat.html',
+    signInOptions: [
+      // Leave the lines as is for the providers you want to offer your users.
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID
+      //firebase.auth.PhoneAuthProvider.PROVIDER_ID
+    ],
+    // Terms of service url.
+    tosUrl: '<your-tos-url>',
+    // Privacy policy url.
+    privacyPolicyUrl: '<your-privacy-policy-url>'
+  };
+
+  ui.start('#firebaseui-auth-container', uiConfig);
+  firebase.auth().onAuthStateChanged(function (user) {
+    console.log(user);
+    if (!user) {
+      document.getElementById('firebaseui-auth-container').style.display = 'block'
+      document.getElementById('notif_ui').style.display = 'none';
+      unsubscribeUser();
+      ui.start('#firebaseui-auth-container', uiConfig);
+    } else {
+      document.getElementById('firebaseui-auth-container').style.display = 'none';
+      document.getElementById('notif_ui').style.display = 'block';
+    }
+  });
+}
+

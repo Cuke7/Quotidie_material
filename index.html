@@ -22,6 +22,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <!-- Import my custom styles -->
   <link rel="stylesheet" href="./styles/style.css" />
+
+  <!-- Import Firebase script and styles-->
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 </head>
 
 <header class="mdc-top-app-bar mdc-top-app-bar--fixed" style="top: 0px; margin-bottom: 16px;">
@@ -56,8 +60,8 @@
 
 <body style="margin: 0px">
 
-  <!-- EVANGILE-->
-  <div class="mdc-card" style="margin: 16px;margin-top: 72px;">
+  <!-- EVANGILE -->
+  <div class="mdc-card" style="margin: 16px;margin-top: 72px; display: none;">
     <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
       <div class="my-card-content">
         <div class="demo-card__primary ">
@@ -70,8 +74,8 @@
     </div>
   </div>
 
-  <!-- SAINT DU JOUR-->
-  <div class="mdc-card" style="margin: 16px;margin-top: 0px;">
+  <!-- SAINT DU JOUR -->
+  <div class="mdc-card" style="margin: 16px;margin-top: 0px; display: none;">
     <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
       <div id="saint_image" class="mdc-card__media mdc-card__media--16-9 demo-card__media">
       </div>
@@ -83,21 +87,60 @@
   </div>
   </div>
 
-  <!-- NOTIFICATIONS-->
-  <div class="mdc-card" style="margin: 16px;margin-top: 0px;">
+  <!-- NOTIFICATIONS -->
+  <div class="mdc-card" style="margin: 16px;margin-top: 74px;">
     <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
       <div class="demo-card__primary my-card-content">
         <h2 class="demo-card__title mdc-typography mdc-typography--headline6"><b>Notifications</b></h2>
+        <div id="firebaseui-auth-container" style="display: none;"></div>
+        <div id="loader">Loading...</div>
+        <div id="notif_ui">
+          <div id="text_notif" style="display: inline-block; margin-top: 15px;">Autoriser les notifications push</div>
+          <label class="switch">
+            <input id="switch_notif" type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
       </div>
     </div>
   </div>
   </div>
 </body>
 
+<!-- Import firebase components -->
+<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+<!-- Initialise Firebase -->
+<script type="text/javascript">
+  let config = {
+    apiKey: "AIzaSyCgOPJ_ovnHss3uUDvITCM6OvylqWzXBNg",
+    authDomain: "quotidie-7b0e6.firebaseapp.com",
+    databaseURL: "https://quotidie-7b0e6.firebaseio.com",
+    projectId: "quotidie-7b0e6",
+    storageBucket: "",
+    messagingSenderId: "630900411241",
+    appId: "1:630900411241:web:b0b6961a0396176d20cbf8"
+  };
+  firebase.initializeApp(config);
+</script>
+
 <!-- Import Material scripts -->
 <script src="https://unpkg.com/material-components-web@3.2.0/dist/material-components-web.min.js"></script>
 
 <script src="./scripts/app.js"></script>
 <script src="./scripts/install.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161624657-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161624657-1');
+</script>
+
 
 </html>

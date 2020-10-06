@@ -1,8 +1,8 @@
 "use strict";
 
 // CODELAB: Update cache names any time any of the cached files change.
-const CACHE_NAME = "static-cache-v0";
-const DATA_CACHE_NAME = "data-cache-v0";
+const CACHE_NAME = "static-cache-v01";
+const DATA_CACHE_NAME = "data-cache-v01";
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
@@ -74,5 +74,28 @@ self.addEventListener("fetch", (evt) => {
         return response || fetch(evt.request);
       });
     })
+  );
+});
+
+self.addEventListener('push', function (event) {
+  console.log('[Service Worker] Push Received.');
+  console.log(`[Service Worker] Push had this data 2: "${event.data.text()}"`);
+
+  const title = 'Quotidie';
+  const options = {
+    body: event.data.text(),
+    icon: 'images/icon.png',
+    badge: 'images/badge.svg'
+  };
+  event.waitUntil(self.registration.showNotification(title, options))
+});
+
+self.addEventListener('notificationclick', function (event) {
+  console.log('[Service Worker] Notification click received.');
+
+  event.notification.close();
+
+  event.waitUntil(
+    clients.openWindow('https://quotidie-netlify.app')
   );
 });
