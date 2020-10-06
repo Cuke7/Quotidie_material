@@ -13,7 +13,7 @@ const applicationServerPublicKey = 'BNgw-Zyf0z8cX2-b45_L60or_52GbSy02Nw4bp_SAJt_
 let isSubscribed = false;
 let swRegistration = null;
 
-const pushSwitch = document.getElementById('switch_notif');
+const pushSwitch = document.getElementById('basic-switch');
 var text_notif = document.getElementById('text_notif');
 
 const shareButton = document.getElementById('butShare');
