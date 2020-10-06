@@ -5,7 +5,7 @@
 const topAppBarElement = document.querySelector(".mdc-top-app-bar");
 mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarElement);
 const switchElement = document.querySelector(".mdc-switch");
-mdc.switchControl.MDCSwitch.attachTo(topAppBarElement);
+mdc.switchControl.MDCSwitch.attachTo(switchElement);
 
 // Notification key
 const applicationServerPublicKey = 'BNgw-Zyf0z8cX2-b45_L60or_52GbSy02Nw4bp_SAJt_M6e0Y_6W4E8u7XzDCcmkGRmkjDRL53acllyHqS7B0fs';
