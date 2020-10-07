@@ -236,9 +236,11 @@ function updateSwitch() {
   if (isSubscribed) {
     //text_notif.innerHTML = 'Désactiver les notifications push';
     pushSwitch.checked = true;
+    document.getElementsByClassName('mdc-switch')[0].classList.add('mdc-switch--checked');
   } else {
     //text_notif.innerHTML = 'Autoriser les notifications push';
     pushSwitch.checked = false;
+    document.getElementsByClassName('mdc-switch')[0].classList.remove('mdc-switch--checked');
   }
 }
 
