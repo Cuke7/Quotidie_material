@@ -1,8 +1,8 @@
 "use strict";
 
 // CODELAB: Update cache names any time any of the cached files change.
-const CACHE_NAME = "static-cache-v14";
-const DATA_CACHE_NAME = "data-cache-v14";
+const CACHE_NAME = "static-cache-v15";
+const DATA_CACHE_NAME = "data-cache-v15";
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
