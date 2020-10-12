@@ -12,7 +12,7 @@ let buttons_link = [
 init();
 
 function init(){
-  let day = get_number_day();
+  let day = get_number_day()-1;
   //day =  Math.floor(365*Math.random());
   console.log(day);
   //day = 159;
