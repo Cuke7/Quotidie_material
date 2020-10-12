@@ -1,24 +1,24 @@
 "use strict";
 
 // CODELAB: Update cache names any time any of the cached files change.
-const CACHE_NAME = "static-cache-v15";
-const DATA_CACHE_NAME = "data-cache-v15";
+const CACHE_NAME = "static-cache-v1";
+const DATA_CACHE_NAME = "data-cache-v1";
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
   "/",
-  "./index.html",
-  "./lectures.html",
-  "./prayers.html",
-  "./scripts/app.js",
-  "./scripts/install.js",
-  "./script/lectures_data.js",
-  "./lectures.js",
-  "./prayers_data.js",
-  "./prayers.js",
-  "./styles/style.css",
-  "./styles/my-themes.css",
-  "./styles/icomoon.woff",
+  "/index.html",
+  "/lectures.html",
+  "/prayers.html",
+  "/scripts/app.js",
+  "/scripts/install.js",
+  "/script/lectures_data.js",
+  "/lectures.js",
+  "/prayers_data.js",
+  "/prayers.js",
+  "/styles/style.css",
+  "/styles/my-themes.css",
+  "/styles/icomoon.woff",
 ];
 
 self.addEventListener("install", (evt) => {
