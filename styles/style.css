@@ -40,3 +40,9 @@ iframe{
   width: 100%;
   height: 70vh;
 }
+
+.mdc-button{
+  margin: 16px;
+  text-transform: none;
+  margin-bottom: 0px;
+}

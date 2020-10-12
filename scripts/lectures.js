@@ -1,13 +1,20 @@
 // Materials components
 const topAppBarElement = document.querySelector(".mdc-top-app-bar");
 mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarElement);
+mdc.ripple.MDCRipple.attachTo(document.querySelector('#button_link1'));
+mdc.ripple.MDCRipple.attachTo(document.querySelector('#button_link2'));
+
+let buttons_link = [
+  document.getElementById('button_link1'),
+  document.getElementById('button_link2'),
+]
 
 init();
 
 function init(){
   let day = get_number_day();
-  day =  Math.floor(365*Math.random());
-  //console.log(day);
+  //day =  Math.floor(365*Math.random());
+  console.log(day);
   //day = 159;
   //day = 38;
   //document.getElementById('reference').innerHTML = "Référence du jour (" + data[day][2] + ")";
@@ -36,11 +43,18 @@ function init(){
   document.getElementById('readings').innerHTML = "Références du jour : " + data[day][1];
   console.log(output);
 
+  for (let i = 0; i < output.length; i++) {
+    const ref = output[i];
+    buttons_link[i].children[0].innerHTML = ref.book + " " + ref.chapter_start;
+    buttons_link[i].style.display = "inline-block";
+    buttons_link[0].parentElement.href = "https://www.aelf.org/bible/"+ref.book + "/" + ref.chapter_start;
+  }
 
-  // Adjust iframe height
-  var rect = document.getElementById('iframe').getBoundingClientRect();
-    console.log(rect.top, rect.right, rect.bottom, rect.left);
-
+  for (const ref of output) {
+    console.log(ref);
+    let button = document.createElement('button');
+    
+  }
 }
 
 function get_number_day(){
