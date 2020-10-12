@@ -7,11 +7,18 @@ const DATA_CACHE_NAME = "data-cache-v14";
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
   "/",
-  "/index.html",
-  "/scripts/app.js",
-  "/scripts/install.js",
-  "/styles/style.css",
-  "/styles/icomoon.woff",
+  "./index.html",
+  "./lectures.html",
+  "./prayers.html",
+  "./scripts/app.js",
+  "./scripts/install.js",
+  "./script/lectures_data.js",
+  "./lectures.js",
+  "./prayers_data.js",
+  "./prayers.js",
+  "./styles/style.css",
+  "./styles/my-themes.css",
+  "./styles/icomoon.woff",
 ];
 
 self.addEventListener("install", (evt) => {
