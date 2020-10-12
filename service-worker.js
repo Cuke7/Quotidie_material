@@ -1,8 +1,8 @@
 "use strict";
 
 // CODELAB: Update cache names any time any of the cached files change.
-const CACHE_NAME = "static-cache-v13";
-const DATA_CACHE_NAME = "data-cache-v13";
+const CACHE_NAME = "static-cache-v14";
+const DATA_CACHE_NAME = "data-cache-v14";
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
@@ -96,6 +96,6 @@ self.addEventListener('notificationclick', function (event) {
   event.notification.close();
 
   event.waitUntil(
-    clients.openWindow('https://quotidie-netlify.app')
+    clients.openWindow('https://quotidie.netlify.app')
   );
 });
