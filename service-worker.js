@@ -1,8 +1,8 @@
 "use strict";
 
 // CODELAB: Update cache names any time any of the cached files change.
-const CACHE_NAME = "static-cache-v2";
-const DATA_CACHE_NAME = "data-cache-v2";
+const CACHE_NAME = "static-cache-v3";
+const DATA_CACHE_NAME = "data-cache-v3";
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
@@ -12,10 +12,10 @@ const FILES_TO_CACHE = [
   "/prayers.html",
   "/scripts/app.js",
   "/scripts/install.js",
-  "/script/lectures_data.js",
-  "/script/lectures.js",
-  "/script/prayers_data.js",
-  "/script/prayers.js",
+  "/scripts/lectures_data.js",
+  "/scripts/lectures.js",
+  "/scripts/prayers_data.js",
+  "/scripts/prayers.js",
   "/styles/style.css",
   "/styles/my-themes.css",
   "/styles/icomoon.woff",
