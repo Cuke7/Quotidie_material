@@ -53,18 +53,23 @@ self.addEventListener("activate", (evt) => {
 });
 
 self.addEventListener("fetch", (evt) => {
-  console.log("[ServiceWorker] Fetch", evt.request.url);
+  //console.log("[ServiceWorker] Fetch", evt.request.url);
   // CODELAB: Add fetch event handler here.
-  if (evt.request.url.includes("/get_evangile") || evt.request.url.includes("/get_saint")) {
-    console.log("[Service Worker] Fetch (data)", evt.request.url);
+  if (
+    evt.request.url.includes("/get_evangile") ||
+    evt.request.url.includes("/get_saint")
+  ) {
+    //console.log("[Service Worker] Fetch (data)", evt.request.url);
     evt.respondWith(
       caches.open(DATA_CACHE_NAME).then((cache) => {
         return fetch(evt.request)
           .then((response) => {
+            console.log(response);
             // If the response was good, clone it and store it in the cache.
             if (response.status === 200) {
               cache.put(evt.request.url, response.clone());
               console.log(evt.request.url);
+              console.log("TOTO");
             }
             return response;
           })
@@ -84,25 +89,23 @@ self.addEventListener("fetch", (evt) => {
   );
 });
 
-self.addEventListener('push', function (event) {
-  console.log('[Service Worker] Push Received.');
+self.addEventListener("push", function (event) {
+  console.log("[Service Worker] Push Received.");
   console.log(`[Service Worker] Push had this data 2: "${event.data.text()}"`);
 
-  const title = 'Quotidie';
+  const title = "Quotidie";
   const options = {
     body: event.data.text(),
-    icon: 'images/icon.png',
-    badge: 'images/badge.svg'
+    icon: "images/icon.png",
+    badge: "images/badge.svg",
   };
-  event.waitUntil(self.registration.showNotification(title, options))
+  event.waitUntil(self.registration.showNotification(title, options));
 });
 
-self.addEventListener('notificationclick', function (event) {
-  console.log('[Service Worker] Notification click received.');
+self.addEventListener("notificationclick", function (event) {
+  console.log("[Service Worker] Notification click received.");
 
   event.notification.close();
 
-  event.waitUntil(
-    clients.openWindow('https://quotidie.netlify.app')
-  );
+  event.waitUntil(clients.openWindow("https://quotidie.netlify.app"));
 });
