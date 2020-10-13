@@ -40,6 +40,7 @@ function updateData() {
   getEvangileFromCache().then(evangile => {
     console.log('Displaying evangile info from cache')
     if (evangile) {
+      console.log(evangile);
       document.getElementById('evangile_title').innerHTML = evangile.title.substring(11) + '.';
       document.getElementById('evangile_text').innerHTML = evangile.text;
       fix_evangile()
@@ -58,6 +59,7 @@ function updateData() {
   getSaintFromCache().then(saint => {
     if (saint) {
       console.log('Displaying saint info from cache')
+      console.log(saint);
       let image = document.getElementById('saint_image');
       image.src = saint.image_url;
       let name = document.getElementById('saint_name');
@@ -89,7 +91,7 @@ function init() {
 init();
 
 function getEvangileFromNetwork() {
-  return fetch(`https://quotidie-pwa.herokuapp.com/get_evangile`)
+  return fetch(`http://cuke.duckdns.org/get_evangile`)
     .then((response) => {
       return response.json();
     })
@@ -99,7 +101,7 @@ function getEvangileFromNetwork() {
 }
 
 function getSaintFromNetwork() {
-  return fetch(`https://quotidie-pwa.herokuapp.com/get_saint`)
+  return fetch(`http://cuke.duckdns.org/get_saint`)
     .then(response => {
       return response.json();
     })
@@ -112,7 +114,7 @@ function getEvangileFromCache() {
   if (!("caches" in window)) {
     return null;
   }
-  const url = `${window.location.origin}/get_evangile/`;
+  const url = `http://cuke.duckdns.org/get_evangile/`;
   return caches
     .match(url)
     .then(response => {
