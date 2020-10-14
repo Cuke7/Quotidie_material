@@ -93,7 +93,7 @@ function init() {
 init();
 
 function getEvangileFromNetwork() {
-  return fetch(`http://cuke.duckdns.org/get_evangile/`)
+  return fetch(`https://mytrambot-bordeaux.herokuapp.com/get_evangile/`)
     .then((response) => {
       console.log(response);
       return response.json();
@@ -104,7 +104,7 @@ function getEvangileFromNetwork() {
 }
 
 function getSaintFromNetwork() {
-  return fetch(`http://cuke.duckdns.org/get_saint/`)
+  return fetch(`https://mytrambot-bordeaux.herokuapp.com/get_saint/`)
     .then((response) => {
       return response.json();
     })
@@ -117,7 +117,7 @@ function getEvangileFromCache() {
   if (!("caches" in window)) {
     return null;
   }
-  const url = `http://cuke.duckdns.org/get_evangile/`;
+  const url = `https://mytrambot-bordeaux.herokuapp.com/get_evangile/`;
   return caches
     .match(url)
     .then((response) => {
