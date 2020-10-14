@@ -136,7 +136,7 @@ function getSaintFromCache() {
   if (!("caches" in window)) {
     return null;
   }
-  const url = `${window.location.origin}/get_saint/`;
+  const url = `https://mytrambot-bordeaux.herokuapp.com/get_evangile/get_saint/`;
   return caches
     .match(url)
     .then((response) => {
