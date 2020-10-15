@@ -66,8 +66,8 @@ function updateData() {
       name.innerHTML = saint.title;
       let subtitle = document.getElementById("saint_subtitle");
       subtitle.innerHTML = saint.subtitle;
-      let url = document.getElementById("saint_link");
-      url.src = saint.url;
+      //let url = document.getElementById("saint_link");
+      //url.src = saint.url;
     }
   });
 
