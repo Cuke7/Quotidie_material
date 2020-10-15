@@ -1,8 +1,8 @@
 "use strict";
 
 // CODELAB: Update cache names any time any of the cached files change.
-const CACHE_NAME = "static-cache-v45";
-const DATA_CACHE_NAME = "data-cache-v45";
+const CACHE_NAME = "static-cache-v0";
+const DATA_CACHE_NAME = "data-cache-v0";
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
@@ -19,6 +19,8 @@ const FILES_TO_CACHE = [
   "/styles/style.css",
   "/styles/my-theme.css",
   "/styles/icomoon.woff",
+  "/manifest.json",
+  "/images/icon.png",
 ];
 
 self.addEventListener("install", (evt) => {
