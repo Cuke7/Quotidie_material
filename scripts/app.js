@@ -37,8 +37,8 @@ if ("serviceWorker" in navigator && "PushManager" in window) {
 function updateData() {
   // Get the evangile data from the cache.
   getEvangileFromCache().then((evangile) => {
-    console.log("Displaying evangile info from cache");
     if (evangile) {
+      console.log("Displaying evangile info from cache");
       document.getElementById("evangile_title").innerHTML =
         evangile.title.substring(11) + ".";
       document.getElementById("evangile_text").innerHTML = evangile.text;
@@ -301,7 +301,7 @@ function unsubscribeUser() {
       .then(function () {
         updateSubscriptionOnServer(null, uid);
 
-        console.log("User is unsubscribed.");
+        //console.log("User is unsubscribed.");
         isSubscribed = false;
 
         updateSwitch();
