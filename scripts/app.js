@@ -25,7 +25,6 @@ if ("serviceWorker" in navigator && "PushManager" in window) {
     .register("service-worker.js")
     .then(function (swReg) {
       console.log("Service Worker is registered", swReg);
-
       swRegistration = swReg;
     })
     .catch(function (error) {
@@ -210,21 +209,12 @@ function initializeUI() {
     isSubscribed = !(subscription === null);
 
     if (isSubscribed) {
-      console.log("User IS subscribed.");
+      //console.log("User IS subscribed.");
     } else {
-      console.log("User is NOT subscribed.");
+      //console.log("User is NOT subscribed.");
     }
 
     updateSwitch();
-  });
-}
-
-if (navigator.serviceWorker != undefined) {
-  navigator.serviceWorker.register("service-worker.js").then(function (swReg) {
-    console.log("Service Worker is registered", swReg);
-
-    swRegistration = swReg;
-    initializeUI();
   });
 }
 
@@ -353,7 +343,7 @@ function init_auth() {
 
   ui.start("#firebaseui-auth-container", uiConfig);
   firebase.auth().onAuthStateChanged(function (user) {
-    console.log(user);
+    //console.log(user);
     if (!user) {
       document.getElementById("firebaseui-auth-container").style.display =
         "block";
