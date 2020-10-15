@@ -35,10 +35,11 @@ if ("serviceWorker" in navigator && "PushManager" in window) {
 }
 
 function updateData() {
+
   // Get the evangile data from the cache.
   getEvangileFromCache().then((evangile) => {
+    console.log("Displaying evangile info from cache", evangile);
     if (evangile) {
-      console.log("Displaying evangile info from cache");
       document.getElementById("evangile_title").innerHTML =
         evangile.title.substring(11) + ".";
       document.getElementById("evangile_text").innerHTML = evangile.text;
@@ -48,8 +49,7 @@ function updateData() {
 
   // Get the evangile data from the network.
   getEvangileFromNetwork().then((evangile) => {
-    console.log("Displaying evangile info from API");
-    console.log(evangile);
+    console.log("Displaying evangile info from API", evangile);
     document.getElementById("evangile_title").innerHTML =
       evangile.title.substring(11) + ".";
     document.getElementById("evangile_text").innerHTML = evangile.text;
@@ -58,9 +58,8 @@ function updateData() {
 
   // Get the saint data from the cache.
   getSaintFromCache().then((saint) => {
+    console.log("Displaying saint info from cache", saint);
     if (saint) {
-      console.log("Displaying saint info from cache");
-      console.log(saint);
       let image = document.getElementById("saint_image");
       image.src = saint.image_url;
       let name = document.getElementById("saint_name");
@@ -74,7 +73,7 @@ function updateData() {
 
   // Get the saint data from the network.
   getSaintFromNetwork().then((saint) => {
-    console.log("Displaying saint info from API");
+    console.log("Displaying saint info from API", saint);
     let image = document.getElementById("saint_image");
     image.style.backgroundImage = "url(" + saint.image_url + ")";
     let name = document.getElementById("saint_name");
