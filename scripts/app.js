@@ -93,7 +93,6 @@ init();
 function getEvangileFromNetwork() {
   return fetch(`https://mytrambot-bordeaux.herokuapp.com/get_evangile/`)
     .then((response) => {
-      console.log(response);
       return response.json();
     })
     .catch(() => {
@@ -134,7 +133,7 @@ function getSaintFromCache() {
   if (!("caches" in window)) {
     return null;
   }
-  const url = `https://mytrambot-bordeaux.herokuapp.com/get_evangile/get_saint/`;
+  const url = `https://mytrambot-bordeaux.herokuapp.com/get_saint/`;
   return caches
     .match(url)
     .then((response) => {
