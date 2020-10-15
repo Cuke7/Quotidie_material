@@ -86,6 +86,7 @@ function updateData() {
 function init() {
   updateData();
   init_auth();
+  initializeUI();
 }
 
 init();
