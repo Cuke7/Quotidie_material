@@ -3,6 +3,7 @@ const topAppBarElement = document.querySelector(".mdc-top-app-bar");
 mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarElement);
 mdc.ripple.MDCRipple.attachTo(document.querySelector('#button_link1'));
 mdc.ripple.MDCRipple.attachTo(document.querySelector('#button_link2'));
+//mdc.list.MDCList.attachTo(document.querySelector('.mdc-list'));
 
 let buttons_link = [
   document.getElementById('button_link1'),
@@ -13,11 +14,7 @@ init();
 
 function init(){
   let day = get_number_day()-1;
-  //day =  Math.floor(365*Math.random());
   console.log(day);
-  //day = 159;
-  //day = 38;
-  //document.getElementById('reference').innerHTML = "Référence du jour (" + data[day][2] + ")";
   let reading_texts = data[day][1].split('&');
   let output = [];
   for (const reading_text of reading_texts) {
@@ -40,20 +37,14 @@ function init(){
     output.push({'book': book, 'chapter_start': chapter_start, 'chapter.end': chapter_end});
 
   }
-  document.getElementById('readings').innerHTML = "Références du jour : " + data[day][1];
-  console.log(output);
+  document.getElementById('readings').innerHTML = " Références du jour : " + data[day][1]+".";
+  //console.log(output);
 
   for (let i = 0; i < output.length; i++) {
     const ref = output[i];
     buttons_link[i].children[0].innerHTML = ref.book + " " + ref.chapter_start;
     buttons_link[i].style.display = "inline-block";
     buttons_link[0].parentElement.href = "https://www.aelf.org/bible/"+ref.book + "/" + ref.chapter_start;
-  }
-
-  for (const ref of output) {
-    console.log(ref);
-    let button = document.createElement('button');
-    
   }
 }
 

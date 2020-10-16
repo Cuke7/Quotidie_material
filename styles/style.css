@@ -46,3 +46,8 @@ iframe{
   text-transform: none;
   margin-bottom: 0px;
 }
+
+.mdc-chip-set .mdc-chip {
+  margin-left: 2px;
+  margin-right: 2px;
+}
