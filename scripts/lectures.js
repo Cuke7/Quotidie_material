@@ -26,14 +26,14 @@ init();
 function init() {
   // Numéro du jour de l'année
   let day = get_number_day();
-  day = 67;
+  console.log(day);
 
   // Objet qui contient la référence de lecture du jour
   let output = get_ref_object(day);
 
   // MAJ du texte d'intro
   document.getElementById("readings").innerHTML =
-    " Références du jour : <b>" + data[day - 1][1] + ".</b>";
+    " Références du jour : <b>" + data[day][1] + ".</b>";
 
   // Unmask les boutons liens en fonction du nombre de référence de lectures
   for (let i = 0; i < output.length; i++) {
@@ -45,28 +45,23 @@ function init() {
   }
 
   //Cherche le nom du jour actuel
-  let week_day_number = day % 7;
-  console.log(data[day][2]);
-  console.log("Modulo = " + (day % 7));
   let sunday = day - (day % 7);
   let saturday = day + (6 - (day % 7));
-  console.log(data[sunday][2]);
-  console.log(data[saturday][2]);
 
   let temp = 0;
 
   for (i = sunday; i <= saturday; i++) {
     add_list_element(week_day[temp] + " " + data[i][2], data[i][1]);
     temp++;
-    if (i == day - 1) {
+    if (i == day) {
       document.querySelector(".mdc-list--two-line").lastChild.style.color =
-        "red";
+        "green";
     }
   }
 }
 
 function get_ref_object(day_temp) {
-  let day = day_temp - 1;
+  let day = day_temp;
 
   let reading_texts = data[day][1].split("&");
   let output = [];
