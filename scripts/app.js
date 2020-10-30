@@ -172,7 +172,7 @@ shareButton.addEventListener("click", function () {
       .share({
         title: "Quotidie ✝️",
         text: "Lire l'évangile du jour",
-        url: "https://quotidie-netlify.app/",
+        url: "https://quotidie.netlify.app",
       })
       .then(() => console.log("Successful share"))
       .catch((error) => console.log("Error sharing", error));
