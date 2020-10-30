@@ -13,6 +13,10 @@
   content: "\e900";
 }
 
+.mdc-card{
+  margin: 16px;
+}
+
 .my-card-content {
   padding-left: 16px;
   padding-right: 16px;
@@ -23,6 +27,8 @@
 
 body{
   background: #ececec;
+  margin: 0px;
+  padding-top: 56px;
 }
 
 hr {
@@ -50,4 +56,10 @@ iframe{
 .mdc-chip-set .mdc-chip {
   margin-left: 2px;
   margin-right: 2px;
+}
+
+#text_notif{
+  display: inline-block; 
+  margin-bottom: 16px; 
+  margin-right: 16px
 }

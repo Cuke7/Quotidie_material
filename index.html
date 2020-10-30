@@ -31,12 +31,6 @@
 <header class="mdc-top-app-bar mdc-top-app-bar--fixed" style="top: 0px; margin-bottom: 16px;">
   <div class="mdc-top-app-bar__row">
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-      <!-- <button
-          class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
-          aria-label="Open navigation menu"
-        >
-          menu
-        </button>-->
       <span class="mdc-top-app-bar__title">Quotidie ✝️</span>
     </section>
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
@@ -48,7 +42,7 @@
           aria-label="Lectures">
           book
         </button></a>
-      <a href="./prayers.html"><button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+      <a href="./prieres.html"><button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
           aria-label="Prières">
           <span class="icon-rosary"></span>
         </button></a>
@@ -59,10 +53,10 @@
   </div>
 </header>
 
-<body style="margin: 0px">
+<body>
 
   <!-- EVANGILE -->
-  <div class="mdc-card" style="margin: 16px;margin-top: 72px;">
+  <div class="mdc-card">
     <div class="my-card-content">
       <div class="demo-card__primary ">
         <h2 class="demo-card__title mdc-typography mdc-typography--headline6"><b>Évangile du jour</b></h2>
@@ -74,7 +68,7 @@
   </div>
 
   <!-- SAINT DU JOUR -->
-  <div class="mdc-card" style="margin: 16px;margin-top: 0px;">
+  <div class="mdc-card">
     <div id="saint_image" class="mdc-card__media mdc-card__media--16-9 demo-card__media">
     </div>
     <div class="demo-card__primary my-card-content">
@@ -85,13 +79,13 @@
   </div>
 
   <!-- NOTIFICATIONS -->
-  <div class="mdc-card" style="margin: 16px;margin-top: 0px;">
+  <div class="mdc-card">
     <div class="demo-card__primary my-card-content">
       <h2 class="demo-card__title mdc-typography mdc-typography--headline6"><b>Notifications quotidiennes</b></h2>
       <div id="firebaseui-auth-container" style="display: none;"></div>
       <div id="loader">Loading...</div>
       <div id="notif_ui" style="text-align: center;">
-        <div id="text_notif" style="display: inline-block; margin-bottom: 16px; margin-right: 16px;">Autoriser les
+        <div id="text_notif">Autoriser les
           notifications push</div>
         <div class="mdc-switch" style="vertical-align: middle;">
           <div class="mdc-switch__track"></div>
