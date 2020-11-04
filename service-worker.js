@@ -109,6 +109,10 @@ self.addEventListener("notificationclick", function (event) {
   console.log("[Service Worker] Notification click received.");
 
   event.notification.close();
+  if (event.data.text().match("Votre attestation a été générée.")) {
+    event.waitUntil(clients.openWindow("https://google.fr"));
+  } else {
+    event.waitUntil(clients.openWindow("https://quotidie.netlify.app"));
+  }
 
-  event.waitUntil(clients.openWindow("https://quotidie.netlify.app"));
 });
