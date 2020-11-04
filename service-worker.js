@@ -92,6 +92,8 @@ self.addEventListener("fetch", (evt) => {
   );
 });
 
+let notif_data = "";
+
 self.addEventListener("push", function (event) {
   console.log("[Service Worker] Push Received.");
   console.log(`[Service Worker] Push had this data 2: "${event.data.text()}"`);
@@ -102,6 +104,8 @@ self.addEventListener("push", function (event) {
     icon: "images/icon.png",
     badge: "images/badge.svg",
   };
+
+  notif_data = event.data.text();
   event.waitUntil(self.registration.showNotification(title, options));
 });
 
@@ -109,7 +113,7 @@ self.addEventListener("notificationclick", function (event) {
   console.log("[Service Worker] Notification click received.");
 
   event.notification.close();
-  if (event.data.text().match("Votre attestation a été générée.")) {
+  if (notif_data === "Votre attestation a été générée.") {
     event.waitUntil(clients.openWindow("https://google.fr"));
   } else {
     event.waitUntil(clients.openWindow("https://quotidie.netlify.app"));
