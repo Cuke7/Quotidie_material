@@ -7,14 +7,14 @@ const DATA_CACHE_NAME = "data-cache-v1";
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
   "/",
-  /*"/index.html",
+  "/index.html",
   "/lectures.html",
   "/lectures_recap.html",
   "/prieres.html",
   "/scripts/app.js",
   "/scripts/install.js",
   "/scripts/lectures/lectures_data.js",
-  "/scripts/lectures/lectures.js",
+  /*"/scripts/lectures/lectures.js",
   "/scripts/lectureslecture_recap.js",
   "/scripts/prieres/prayers_data.js",
   "/scripts/prieres/prayers.js",
