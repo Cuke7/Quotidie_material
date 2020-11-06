@@ -15,14 +15,14 @@ const FILES_TO_CACHE = [
   "/scripts/install.js",
   "/scripts/lectures/lectures_data.js",
   "/scripts/lectures/lectures.js",
-  "/scripts/lectureslecture_recap.js",
+  "/scripts/lectures/lecture_recap.js",
   "/scripts/prieres/prayers_data.js",
-  /*"/scripts/prieres/prayers.js",
+  "/scripts/prieres/prayers.js",
   "/styles/style.css",
   "/styles/my-theme.css",
   "/styles/icomoon.woff",
   "/manifest.json",
-  "/images/icon.png",*/
+  "/images/icon.png",
 ];
 
 self.addEventListener("install", (evt) => {
