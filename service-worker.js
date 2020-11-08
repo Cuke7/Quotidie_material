@@ -114,7 +114,7 @@ self.addEventListener("notificationclick", function (event) {
 
   event.notification.close();
   if (notif_data === "Votre attestation a été générée.") {
-    event.waitUntil(clients.openWindow("http://cuke.duckdns.org/get_attestation_generated"));
+    event.waitUntil(clients.openWindow("http://cuke.duckdns.org/get_attestation"));
   } else {
     event.waitUntil(clients.openWindow("https://quotidie.netlify.app"));
   }
