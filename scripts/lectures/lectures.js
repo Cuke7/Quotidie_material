@@ -41,7 +41,9 @@ function init() {
     const ref = output[i];
     buttons_link[i].children[0].innerHTML = ref.book + " " + ref.chapter_start;
     buttons_link[i].style.display = "inline-block";
-    buttons_link[0].parentElement.href =
+    buttons_link[i].parentElement.href =
+      "https://www.aelf.org/bible/" + ref.book + "/" + ref.chapter_start;
+    buttons_link[i].parentElement.href =
       "https://www.aelf.org/bible/" + ref.book + "/" + ref.chapter_start;
   }
 
