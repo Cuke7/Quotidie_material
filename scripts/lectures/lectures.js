@@ -26,7 +26,7 @@ init();
 function init() {
   // Numéro du jour de l'année
   let day = get_number_day();
-  day = day -334
+  day = day + 32;
   console.log(day);
 
   // Objet qui contient la référence de lecture du jour

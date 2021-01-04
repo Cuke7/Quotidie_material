@@ -23,7 +23,7 @@ scrollToSelection = function () {
 
 function init() {
   let day = get_number_day();
-  day = day -334
+  day = day + 32;
   console.log(day);
 
   for (i = 0; i < data.length; i++) {
