@@ -270,14 +270,14 @@ function updateSubscriptionOnServer(subscription, uid) {
     let user = firebase.auth().currentUser;
     firebase
       .database()
-      .ref("PWA_users/" + user.displayName)
+      .ref("PWA_users/" + user.email)
       .set(JSON.stringify(subscription));
   } else {
     let user = firebase.auth().currentUser;
     if (user) {
       firebase
         .database()
-        .ref("PWA_users/" + user.displayName)
+        .ref("PWA_users/" + user.email)
         .remove();
     }
   }
